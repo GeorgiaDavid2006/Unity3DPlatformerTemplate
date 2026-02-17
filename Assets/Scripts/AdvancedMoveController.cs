@@ -30,7 +30,18 @@ public class AdvancedMoveController : MovementController
     [Tooltip("Damage applied when shooting an enemy")]
     public int shootDamage = 5;
     [Tooltip("The distance the player's projectile will travel before disappearing")]
-    public int shootDistance = 10;
+    public float shootDistance = 10f;
+
+    [Header("ShootAnimation")]
+    [Tooltip("Access Animator component")]
+    private new Animator animator;
+    [Tooltip("Access PlayerController")]
+    private PlayerController playerController;
+    [Tooltip("Access MovementController")]
+    private MovementController movementController;
+    [Tooltip("Access Collider component")]
+    private Collider playerCollider;
+
     [Header("Air Movement Settings")]
     [Tooltip("Air rotation speed")]
     public float airRotationSpeed = 0.38f;
