@@ -27,6 +27,10 @@ public class AdvancedMoveController : MovementController
     [Header("Combat")]
     [Tooltip("Damage applied when jumping on an enemy")]
     public int stompDamage = 1;
+    [Tooltip("Damage applied when shooting an enemy")]
+    public int shootDamage = 5;
+    [Tooltip("The distance the player's projectile will travel before disappearing")]
+    public int shootDistance = 10;
     [Header("Air Movement Settings")]
     [Tooltip("Air rotation speed")]
     public float airRotationSpeed = 0.38f;
