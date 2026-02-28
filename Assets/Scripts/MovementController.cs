@@ -16,8 +16,6 @@ public class MovementController : MonoBehaviour
     public float Acceleration = 70f;
     public float Friction = 7.6f;
 
-
-
 	private Vector3 currentVelocity;
 	public float distanceToDestination {get; set;}
 	
@@ -222,7 +220,8 @@ public class MovementController : MonoBehaviour
     public void ApplyCustomSquashEffect(Vector3 customSquash)
     {
         if (!animator) return;
-        animator.transform.localScale = new Vector3(
+        animator.transform.localScale = new Vector3
+		(
             customSquash.x * baseModelScale.x,  // Horizontal squeeze
             customSquash.y * baseModelScale.y,   // Vertical stretch
             customSquash.z * baseModelScale.z   // Horizontal squeeze
@@ -233,7 +232,8 @@ public class MovementController : MonoBehaviour
     {
         if (!animator) return;
 
-        animator.transform.localScale = new Vector3(
+        animator.transform.localScale = new Vector3
+	    (
             StretchEffect.x * baseModelScale.x,  // Horizontal squeeze
             StretchEffect.y * baseModelScale.y,   // Vertical stretch
             StretchEffect.z * baseModelScale.z   // Horizontal squeeze
@@ -254,5 +254,10 @@ public class MovementController : MonoBehaviour
 	public void SetOverridingForceAndFriction(Vector2 _overridingValues)
 	{
 		overridingMultiplyForceAndFriction = _overridingValues;
+	}
+
+	public void Shoot()
+	{
+
 	}
 }
