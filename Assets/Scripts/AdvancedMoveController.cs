@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.WSA;
 
 /// <summary>
 /// Extends basic MovementController with advanced features for character movement.
@@ -31,6 +32,15 @@ public class AdvancedMoveController : MovementController
     public int shootDamage = 5;
     [Tooltip("The distance the player's projectile will travel before disappearing")]
     public float shootDistance = 10f;
+    [Tooltip("The cooldown time before the player can shoot again")]
+    public float coolDownDuration = 3f;
+    [Tooltip("The force of the projectile")]
+    public float shootForce = 10f;
+    [Tooltip("A reference to the projectile script")]
+    private Projectile projectile;
+    [Tooltip("A reference to the projectile game object")]
+    public GameObject playerProjectile;
+  
 
     [Header("ShootAnimation")]
     [Tooltip("Access Animator component")]
@@ -96,6 +106,8 @@ public class AdvancedMoveController : MovementController
     /// Updates ground detection and movement parameters. Should be called in FixedUpdate.
     /// Handles ground detection, slope interactions, and jump leniency timing.
     /// </summary>
+    /// 
+
     public void UpdateMovement()
     {
         isGrounded = CheckGroundContact();
@@ -329,6 +341,21 @@ public class AdvancedMoveController : MovementController
             {
                 rb.linearVelocity = Vector3.zero;
             }
+        }
+    }
+
+    public void Shoot()
+    {
+        if (isGrounded)
+        {
+            projectile = playerProjectile.GetComponent<Projectile>();
+
+            Instantiate(playerProjectile, gameObject.transform);
+            projectile.Launch(Vector3.forward, shootForce);
+        }
+        else
+        {
+            return;
         }
     }
 } 

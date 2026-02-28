@@ -255,9 +255,4 @@ public class MovementController : MonoBehaviour
 	{
 		overridingMultiplyForceAndFriction = _overridingValues;
 	}
-
-	public void Shoot()
-	{
-
-	}
 }
